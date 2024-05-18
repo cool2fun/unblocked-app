@@ -17,7 +17,7 @@ fetch("/assets/js/adsense.json")  // Update the path as necessary
           autogads.setAttribute("crossorigin", "anonymous");
           document.head.appendChild(autogads);
         } else {
-          const ogcontainer = document.querySelector(".container");
+          const ogcontainer = document.querySelector(".ad-adsense1");
           if (ogcontainer) {
             const adDiv = document.createElement("div");
             adDiv.classList.add("adDiv");
@@ -40,7 +40,7 @@ fetch("/assets/js/adsense.json")  // Update the path as necessary
 
             console.log("Ads displayed");
           } else {
-            console.log("container not found");
+            console.log("ad-adsense1 not found");
           }
         }
       }
