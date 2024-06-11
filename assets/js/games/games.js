@@ -18,7 +18,7 @@ const gamesArr = [
     controls: [`W/I: Jump`, `E/O: Shoot`]
   },
   {
-    filter: [`driving`, `sports`, `all`],
+    filter: [`driving`, `sports`, `mp`],
     link: `slope`,
     imgsrc: `slope.png`,
     name: `Slope`,
