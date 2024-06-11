@@ -19,7 +19,7 @@ const gamesArr = [
   },
   {
     filter: [`driving`, `sports`, `all`],
-    link: `Slope`,
+    link: `slope`,
     imgsrc: `slope.png`,
     name: `Slope`,
     developer: `Rob Kay`,
