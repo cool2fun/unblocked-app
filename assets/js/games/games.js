@@ -23,17 +23,7 @@ const gamesArr = [
     imgsrc: `slope.png`,
     name: `Slope`,
     developer: `Rob Kay`,
-    desc: `Play Slope Game, an endless space run game. Drive a ball in the 3D running game in Slope Game. Easy to controls, high speed, and addictive gameplay.
-
-Drive your ball to follow the straight line in space and avoid obstacles as they crash through the race.
-
-With high speed and racetrack in space, slope game improves your reflexes and reactions, provides hours of fun, and relaxes.
-
-If you enjoy high-speed platform games, you will be addicted to this game after the first play.
-
-Players only need to use the keyboard arrow keys to play the Slope game. The real-time gameplay is flexible and players only have to change their movements small enough. The ball's gestures get pronounced as players keep up keyboard keys for longer.
-
-just drive the ball and guid it around the racetrack. Note that the racetrack is infinite - no levels or stages are needed to finish. Only try to keep the ball to a high score as long as possible.`,
+    desc: `Play Slope Game, an endless space run game. Drive a ball in the 3D running game in Slope Game. Easy to controls, high speed, and addictive gameplay.`,
     controls: [`W/I: Jump`, `E/O: Shoot`]
   },
 ];
