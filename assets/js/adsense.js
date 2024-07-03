@@ -1,4 +1,3 @@
-// Tạo phần tử script để chèn mã AdSense
 const adScript = document.createElement('script');
 adScript.async = true;
 adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
