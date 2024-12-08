@@ -1,5 +1,5 @@
 const categories = [
-    { name: "Home", link: "index.html" },
+    { name: "Home", link: "./" },
     { name: "Action", link: "category.html?category=Action" },
     { name: "Fighting", link: "category.html?category=Fighting" },
     { name: "Shooting", link: "category.html?category=Shooting" },
