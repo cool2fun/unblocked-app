@@ -1,30 +1,37 @@
 // File: ads.js
-const adCodes = {
-     ad970x250: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6556788076088846" crossorigin="anonymous"></script>
-                 <ins class="adsbygoogle" style="display:inline-block;width:970px;height:250px" data-ad-client="ca-pub-6556788076088846" data-ad-slot="7979200749"></ins>
-                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
-     ad300x250: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6556788076088846" crossorigin="anonymous"></script>
-                 <ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-6556788076088846" data-ad-slot="9406916186"></ins>
-                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`,
-     ad728x90: `<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6556788076088846" crossorigin="anonymous"></script>
-                <ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-6556788076088846" data-ad-slot="5424355442"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>`
+const adSlots = {
+     'ad-970x250': '7979200749',
+     'ad-300x250': '9406916186',
+     'ad-728x90': '5424355442'
  };
  
- function insertAds() {
-     const adContainers = {
-         '.ad-970x250': 'ad970x250',
-         '.ad-300x250': 'ad300x250',
-         '.ad-728x90': 'ad728x90'
-     };
+ function loadAdSenseScript() {
+     const script = document.createElement('script');
+     script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6556788076088846";
+     script.async = true;
+     script.crossOrigin = "anonymous";
+     document.head.appendChild(script);
  
-     for (const [selector, adCode] of Object.entries(adContainers)) {
-         const container = document.querySelector(selector);
+     script.onload = insertAds;
+ }
+ 
+ function insertAds() {
+     for (const [className, adSlot] of Object.entries(adSlots)) {
+         const container = document.querySelector(`.${className}`);
          if (container) {
-             container.innerHTML = adCodes[adCode];
+             const ins = document.createElement('ins');
+             ins.className = 'adsbygoogle';
+             ins.style.display = 'block';
+             ins.setAttribute('data-ad-client', 'ca-pub-6556788076088846');
+             ins.setAttribute('data-ad-slot', adSlot);
+             ins.setAttribute('data-ad-format', 'auto');
+             ins.setAttribute('data-full-width-responsive', 'true');
+             
+             container.appendChild(ins);
+             (adsbygoogle = window.adsbygoogle || []).push({});
          }
      }
  }
  
- // Gọi hàm insertAds khi trang đã tải xong
- document.addEventListener('DOMContentLoaded', insertAds);
+ // Tải script AdSense và chèn quảng cáo khi trang đã tải xong
+ window.addEventListener('load', loadAdSenseScript);
