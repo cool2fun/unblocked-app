@@ -28,7 +28,21 @@ function createGameCard(game) {
 
 function renderGames() {
     const gameGrid = document.getElementById('gameGrid');
-    gameGrid.innerHTML = games.map(createGameCard).join('');
+    if (!gameGrid) return;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category');
+
+    const categoryTitle = document.getElementById('categoryTitle');
+    if (categoryTitle) {
+        categoryTitle.textContent = category || 'All Games';
+    }
+
+    const filteredGames = category
+        ? games.filter(game => game.category.split(',').includes(category))
+        : games;
+
+    gameGrid.innerHTML = filteredGames.map(createGameCard).join('');
 }
 
 function renderOtherGames() {
@@ -44,21 +58,3 @@ document.addEventListener('DOMContentLoaded', () => {
     renderGames();
     renderOtherGames();
 });
-
-/*cate*/
-
-function loadCategoryGames() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
-    
-    document.getElementById('categoryTitle').textContent = category || 'All Games';
-    
-    const filteredGames = category ?
-        games.filter(game => game.category.split(',').includes(category)) :
-        games;
-    
-    const gameGrid = document.getElementById('gameGrid');
-    gameGrid.innerHTML = filteredGames.map(createGameCard).join('');
-}
-
-document.addEventListener('DOMContentLoaded', loadCategoryGames);
