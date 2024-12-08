@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Clicker 2 - Cool2fun.github.io</title>
+    <meta name="description" content="Chơi [Tên Trò Chơi] trực tuyến miễn phí trên Poki Clone. Trải nghiệm gameplay hấp dẫn và đồ họa tuyệt đẹp ngay bây giờ!">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/ad.js" defer></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "Cookie Clicker 2",
+            "alternateName": "Cookie Clicker 2 Unblocked",
+            "description": "Cookie Clicker 2 is an addictive incremental game where you start by clicking to bake cookies and gradually build a massive cookie-producing empire. From humble beginnings with manual clicking, expand your production with automatic bakers, factories, and even cookie-producing portals. Unlock achievements, discover secrets, and employ various strategies to maximize your cookie output. The game features regular updates, exciting upgrades, and endless possibilities for cookie production. Play Cookie Clicker 2 unblocked for free on Cool2Fun!",
+            "url": "https://cool2fun.github.io/cookie-clicker-2.html",
+            "genre": ["Incremental", "Idle", "Simulation", "Strategy"],
+            "gamePlatform": "Web Browser",
+            "applicationCategory": "Game",
+            "operatingSystem": "Any",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "ratingCount": "2500",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Cool2Fun Games"
+            },
+            "keywords": "cookie clicker 2, cookie clicker game, idle game, incremental game, clicking game, strategy game, free online game, cookie game",
+            "playMode": "SinglePlayer",
+            "gameItem": [
+              {
+                "@type": "Thing",
+                "name": "Cookies"
+              },
+              {
+                "@type": "Thing",
+                "name": "Cursor"
+              },
+              {
+                "@type": "Thing",
+                "name": "Grandma"
+              },
+              {
+                "@type": "Thing",
+                "name": "Factory"
+              },
+              {
+                "@type": "Thing",
+                "name": "Portal"
+              },
+              {
+                "@type": "Thing",
+                "name": "Upgrades"
+              }
+            ],
+            "gameTip": "Balance your investments between different producers and upgrades. Remember to check for achievements and special events that can boost your cookie production significantly!"
+          }
+        </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Cool2Fun</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul id="categoryList">
+                    <!-- Danh mục sẽ được thêm vào đây bởi JavaScript -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="ad-container ad-728x90"></div>
+        <div class="content-wrapper">
+            <div class="game-and-info">
+                <div class="game-container">
+                    <div class="game-wrapper">
+                        <div class="game-frame">
+                            <iframe src="games/slope/index.html" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="fullscreen-btn" id="fullscreenBtn">Play Fullscreen</button>
+                </div>
+                <div class="ad-container ad-970x250"></div>
+                <div class="game-info">
+                    <h2>Cookie Clicker 2 Unblocked</h2>
+                    
+                    <div class="game-description">
+                        <p>Cookie Clicker 2 is an addictive incremental game that takes the beloved cookie-clicking concept to new heights. Here's what makes this game special:</p>
+                    </div>
+                
+                    <div class="game-features">
+                        <p>Game Overview</p>
+                            <li>Start your journey by simply clicking to bake cookies</li>
+                            <li>Build and expand your cookie-producing empire</li>
+                            <li>Unlock various upgrades and achievements</li>
+                            <li>Discover new strategies and secrets</li>
+                    </div>
+                    <h3>How To Play</h3>
+                    <div class="game-controls">
+                        <p>ASDW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="ad-container ad-300x250"></div>
+                <div class="other-games">
+                    <h3>Other Games</h3>
+                    <div id="otherGamesList" class="game-grid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about-us.html">About US</a>
+                <a href="terms-of-use.html">Terms Of Use</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Cool2fun.github.io. Play Unblocked Games.
+            </div>
+        </div>
+    </footer>
+    <script>
+        function refreshGames() {
+            const games = [
+                "Games Sport", "Games Racing", "Games Action",
+                "Games Arcade", "Games Adventure", "Games Puzzle"
+            ];
+            const gameList = document.getElementById('gameList');
+            gameList.innerHTML = '';
+            games.forEach(game => {
+                const li = document.createElement('li');
+                li.textContent = game;
+                gameList.appendChild(li);
+            });
+        }
+        
+        function toggleFullscreen() {
+            const gameWrapper = document.querySelector('.game-wrapper');
+            if (!document.fullscreenElement) {
+                if (gameWrapper.requestFullscreen) {
+                    gameWrapper.requestFullscreen();
+                } else if (gameWrapper.mozRequestFullScreen) {
+                    gameWrapper.mozRequestFullScreen();
+                } else if (gameWrapper.webkitRequestFullscreen) {
+                    gameWrapper.webkitRequestFullscreen();
+                } else if (gameWrapper.msRequestFullscreen) {
+                    gameWrapper.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        window.onload = function() {
+    insertAds();
+    renderOtherGames();
+    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+};
+    </script>
+    <script src="/js/categories.js" defer></script>
+    <script src="/js/games.js" defer></script>
+</body>
+</html>
