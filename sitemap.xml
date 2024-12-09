@@ -120,53 +120,27 @@
 
   <!-- Information Pages -->
   <url>
-    <loc>https://cool2fun.github.io/about-us</loc>
+    <loc>https://cool2fun.github.io/about-us.html</loc>
     <lastmod>2024-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cool2fun.github.io/contact</loc>
+    <loc>https://cool2fun.github.io/contact.html</loc>
     <lastmod>2024-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cool2fun.github.io/privacy-policy</loc>
-    <lastmod>2024-12-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cool2fun.github.io/terms-of-use</loc>
+    <loc>https://cool2fun.github.io/privacy-policy.html</loc>
     <lastmod>2024-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-
-  <!-- Category Pages -->
   <url>
-    <loc>https://cool2fun.github.io/category/action</loc>
+    <loc>https://cool2fun.github.io/terms-of-use.html</loc>
     <lastmod>2024-12-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cool2fun.github.io/category/adventure</loc>
-    <lastmod>2024-12-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cool2fun.github.io/category/puzzle</loc>
-    <lastmod>2024-12-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cool2fun.github.io/category/sports</loc>
-    <lastmod>2024-12-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
