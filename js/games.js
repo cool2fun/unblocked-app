@@ -18,6 +18,7 @@ const games = [
     { name: "Stick Merge 2", image: "image/stick-merge-2.png", description: "Action", link: "/stick-merge-2.html", category: "Action,Shooting" },
     { name: "Rusher Crusher", image: "image/rusher-crusher.png", description: "Action Driving", link: "/rusher-crusher.html", category: "Action" },
     { name: "Subway Surfers", image: "image/subway-surfers.png", description: "Endless Runner", link: "/subway-surfers.html", category: "Action,Arcade,Adventure" },
+    { name: "Super Mario", image: "image/super-mario-wonder.png", description: "Platform, Action, Adventure", link: "/super-mario-wonder.html", category: "Arcade,Adventure" },
 ];
 
 /*createGameCard*/
