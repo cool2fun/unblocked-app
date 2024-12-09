@@ -8,6 +8,9 @@ const games = [
     { name: "3D Bowling", image: "image/3d-bowling.png", description: "bowling skills practice", link: "/3d-bowling.html", category: "Sports" },
     { name: "Cookie Clicker 2", image: "image/cookie-clicker-2.png", description: "Clicker Games", link: "/cookie-clicker-2.html", category: "Simulation" },
     { name: "Drive Mad", image: "image/drive-mad.png", description: "driving game", link: "/drive-mad.html", category: "Racing,Sports" },
+    { name: "G-Switch 4", image: "image/g-switch-4.png", description: "Action", link: "/g-switch-4.html", category: "Adventure,Sports" },
+    { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
+    { name: "Heads Arena", image: "image/heads-arena-soccer-all-stars.png", description: "soccer game", link: "/heads-arena-soccer-all-stars.html", category: "Sports" },
 ];
 
 /*createGameCard*/

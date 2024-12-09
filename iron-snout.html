@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron Snout - Cool2fun.github.io</title>
+    <meta name="description" content="Heads Arena Soccer All Stars is an exciting arcade soccer game featuring big-headed versions of famous soccer stars. Challenge friends in local multiplayer matches or compete in tournaments with exaggerated physics, powerful shots, and unique character abilities. Experience soccer like never before with wild gameplay mechanics and entertaining matches. Play Heads Arena Soccer All Stars unblocked for free on Cool2Fun!">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/ad-manager.js" defer></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "Iron Snout",
+            "alternateName": "Iron Snout Unblocked",
+            "description": "Iron Snout is an action-packed fighting game where you play as a skilled kung-fu pig battling against waves of vicious wolves. Use martial arts moves, dodge attacks, and counter your enemies in this fast-paced arcade fighter. With humorous animations and quick-reaction gameplay, test your combat skills in this entertaining battle for survival. Play Iron Snout unblocked for free on Cool2Fun!",
+            "url": "https://cool2fun.github.io/iron-snout",
+            "genre": ["Fighting", "Action", "Arcade", "Comedy"],
+            "gamePlatform": "Web Browser",
+            "applicationCategory": "Game",
+            "operatingSystem": "Any",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.6",
+              "ratingCount": "1500",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Cool2Fun Games"
+            },
+            "keywords": "iron snout, fighting game, kung fu game, arcade game, action game, pig game, free online game, survival game",
+            "playMode": "SinglePlayer",
+            "gameItem": [
+              {
+                "@type": "Thing",
+                "name": "Kung Fu Pig"
+              },
+              {
+                "@type": "Thing",
+                "name": "Wolf Enemies"
+              },
+              {
+                "@type": "Thing",
+                "name": "Combat Moves"
+              },
+              {
+                "@type": "Thing",
+                "name": "Power-ups"
+              }
+            ],
+            "gameTip": "Master the timing of your attacks and counters. Watch enemy patterns to anticipate their moves and use their weapons against them!"
+          }
+        </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="./" class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Cool2Fun</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul id="categoryList">
+                    <!-- Danh mục sẽ được thêm vào đây bởi JavaScript -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="ad-container" data-ad-slot="ad-slot-728x90"></div>
+        <div class="content-wrapper">
+            <div class="game-and-info">
+                <div class="game-container">
+                    <div class="game-wrapper">
+                        <div class="game-frame">
+                            <iframe src="https://ubg98.github.io/IronSnout/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="fullscreen-btn" id="fullscreenBtn">Play Fullscreen</button>
+                </div>
+                <div class="ad-container" data-ad-slot="ad-slot-970x250"></div>
+                <div class="game-info">
+                    <h2>Iron Snout Unblocked</h2>
+                    
+                    <div class="game-description">
+                        <p>Iron Snout is a fast-paced fighting game where you play as a kung-fu pig defending against hordes of evil wolves. This action-packed game combines martial arts moves with humorous animations and quick-reaction gameplay.</p>
+                    </div>
+                
+                    <div class="game-features">
+                        <p>Game Features</p>
+                        <li>Fast-paced combat system</li>
+                        <li>Multiple fighting moves and combos</li>
+                        <li>Various enemy types</li>
+                        <li>Weapon countering mechanics</li>
+                        <li>Score-based progressions</li>
+                        <li>Achievement system</li>
+                        <li>Humorous animations</li>
+                        <li>Endless survival mode</li>
+                    </div>
+                    <h3>How To Play</h3>
+                    <div class="game-controls">
+                        <p>ASDW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="ad-container" data-ad-slot="ad-slot-300x250"></div>
+                <div class="other-games">
+                    <h3>Other Games</h3>
+                    <div id="otherGamesList" class="game-grid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about-us.html">About US</a>
+                <a href="terms-of-use.html">Terms Of Use</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Cool2fun.github.io. Play Unblocked Games.
+            </div>
+        </div>
+    </footer>
+    <script>
+        function refreshGames() {
+            const games = [
+                "Games Sport", "Games Racing", "Games Action",
+                "Games Arcade", "Games Adventure", "Games Puzzle"
+            ];
+            const gameList = document.getElementById('gameList');
+            gameList.innerHTML = '';
+            games.forEach(game => {
+                const li = document.createElement('li');
+                li.textContent = game;
+                gameList.appendChild(li);
+            });
+        }
+        
+        function toggleFullscreen() {
+            const gameWrapper = document.querySelector('.game-wrapper');
+            if (!document.fullscreenElement) {
+                if (gameWrapper.requestFullscreen) {
+                    gameWrapper.requestFullscreen();
+                } else if (gameWrapper.mozRequestFullScreen) {
+                    gameWrapper.mozRequestFullScreen();
+                } else if (gameWrapper.webkitRequestFullscreen) {
+                    gameWrapper.webkitRequestFullscreen();
+                } else if (gameWrapper.msRequestFullscreen) {
+                    gameWrapper.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        window.onload = function() {
+    insertAds();
+    renderOtherGames();
+    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+};
+    </script>
+    <script src="/js/categories.js" defer></script>
+    <script src="/js/games.js" defer></script>
+</body>
+</html>
