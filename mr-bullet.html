@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr Bullet - Cool2fun.github.io</title>
+    <meta name="description" content="Mr Bullet is a clever physics-based puzzle shooter where players must eliminate targets using limited bullets and strategic ricochets. Each level challenges players to think creatively and aim precisely to complete missions with the fewest shots possible. With multiple mission types and progressive difficulty, test your shooting skills and problem-solving abilities. Play Mr Bullet unblocked for free on Cool2Fun!">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/ad-manager.js" defer></script>
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "Mr Bullet",
+            "alternateName": "Mr Bullet Unblocked",
+            "description": "Mr Bullet is a clever physics-based puzzle shooter where players must eliminate targets using limited bullets and strategic ricochets. Each level challenges players to think creatively and aim precisely to complete missions with the fewest shots possible. With multiple mission types and progressive difficulty, test your shooting skills and problem-solving abilities. Play Mr Bullet unblocked for free on Cool2Fun!",
+            "url": "https://cool2fun.github.io/mr-bullet.html",
+            "genre": ["Puzzle", "Action", "Strategy", "Physics"],
+            "gamePlatform": "Web Browser",
+            "applicationCategory": "Game",
+            "operatingSystem": "Any",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.7",
+              "ratingCount": "1900",
+              "bestRating": "5",
+              "worstRating": "1"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Cool2Fun Games"
+            },
+            "keywords": "mr bullet, shooting game, puzzle game, physics game, strategy game, action game, free online game, brain teaser",
+            "playMode": "SinglePlayer",
+            "gameItem": [
+              {
+                "@type": "Thing",
+                "name": "Bullets"
+              },
+              {
+                "@type": "Thing",
+                "name": "Targets"
+              },
+              {
+                "@type": "Thing",
+                "name": "Obstacles"
+              },
+              {
+                "@type": "Thing",
+                "name": "Power-ups"
+              }
+            ],
+            "gameTip": "Study the level layout carefully and look for ricochet opportunities. Sometimes the solution requires fewer bullets than you think!"
+          }
+        </script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="./" class="logo">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Cool2Fun</span>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul id="categoryList">
+                    <!-- Danh mục sẽ được thêm vào đây bởi JavaScript -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="ad-container" data-ad-slot="ad-slot-728x90"></div>
+        <div class="content-wrapper">
+            <div class="game-and-info">
+                <div class="game-container">
+                    <div class="game-wrapper">
+                        <div class="game-frame">
+                            <iframe src="https://ubg98.github.io/MrBullet/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <button class="fullscreen-btn" id="fullscreenBtn">Play Fullscreen</button>
+                </div>
+                <div class="ad-container" data-ad-slot="ad-slot-970x250"></div>
+                <div class="game-info">
+                    <h2>Mr Bullet Unblocked</h2>
+                    
+                    <div class="game-description">
+                        <p>Mr Bullet is an engaging physics-based puzzle shooter where players must use strategic shooting and ricochets to eliminate targets with limited bullets. Every level presents a new challenge requiring creative thinking and precise aiming to complete missions efficiently.</p>
+                    </div>
+                
+                    <div class="game-features">
+                        <p>The game features:</p>
+                        <ul>
+                            <li>Physics-based shooting mechanics</li>
+                            <li>Multiple challenging levels</li>
+                            <li>Strategic puzzle elements</li>
+                            <li>Limited bullet gameplay</li>
+                            <li>Various mission types</li>
+                            <li>Achievement system</li>
+                            <li>Score-based rewards</li>
+                            <li>Progressive difficulty</li>
+                        </ul>
+                    </div>
+                
+                    <h3>How To Play</h3>
+                    <div class="game-controls">
+                        <p>ASDW</p>
+                    </div>
+                </div>
+            </div>
+            <div class="sidebar">
+                <div class="ad-container" data-ad-slot="ad-slot-300x250"></div>
+                <div class="other-games">
+                    <h3>Other Games</h3>
+                    <div id="otherGamesList" class="game-grid"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about-us.html">About US</a>
+                <a href="terms-of-use.html">Terms Of Use</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 Cool2fun.github.io. Play Unblocked Games.
+            </div>
+        </div>
+    </footer>
+    <script>
+        function refreshGames() {
+            const games = [
+                "Games Sport", "Games Racing", "Games Action",
+                "Games Arcade", "Games Adventure", "Games Puzzle"
+            ];
+            const gameList = document.getElementById('gameList');
+            gameList.innerHTML = '';
+            games.forEach(game => {
+                const li = document.createElement('li');
+                li.textContent = game;
+                gameList.appendChild(li);
+            });
+        }
+        
+        function toggleFullscreen() {
+            const gameWrapper = document.querySelector('.game-wrapper');
+            if (!document.fullscreenElement) {
+                if (gameWrapper.requestFullscreen) {
+                    gameWrapper.requestFullscreen();
+                } else if (gameWrapper.mozRequestFullScreen) {
+                    gameWrapper.mozRequestFullScreen();
+                } else if (gameWrapper.webkitRequestFullscreen) {
+                    gameWrapper.webkitRequestFullscreen();
+                } else if (gameWrapper.msRequestFullscreen) {
+                    gameWrapper.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        window.onload = function() {
+    insertAds();
+    renderOtherGames();
+    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+};
+    </script>
+    <script src="/js/categories.js" defer></script>
+    <script src="/js/games.js" defer></script>
+</body>
+</html>

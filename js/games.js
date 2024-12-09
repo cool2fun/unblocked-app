@@ -12,6 +12,10 @@ const games = [
     { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
     { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
     { name: "Little Alchemy 2", image: "image/little-alchemy-2.png", description: "soccer game", link: "/little-alchemy-2.html", category: "Sports" },
+    { name: "Mr Bullet", image: "image/mr-bullet.png", description: "Physics", link: "/mr-bullet.html", category: "Shooting,Action" },
+    { name: "Papa Cherry Saga", image: "image/papa-cherry-saga.png", description: "Puzzle", link: "/papa-cherry-saga.html", category: "Puzzle" },
+    { name: "Rooftop Snipers", image: "image/rooftop-snipers.png", description: "Puzzle", link: "/rooftop-snipers.html", category: "Action,Shooting" },
+    { name: "Stick Merge 2", image: "image/stick-merge-2.png", description: "Action", link: "/stick-merge-2.html", category: "Action,Shooting" },
 ];
 
 /*createGameCard*/
