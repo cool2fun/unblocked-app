@@ -7,6 +7,7 @@ const games = [
     { name: "Boxing Random", image: "image/boxing-random.png", description: "MultiPlayer", link: "boxing-random.html", category: "Sports,Fighting" },
     { name: "3D Bowling", image: "image/3d-bowling.png", description: "bowling skills practice", link: "/3d-bowling.html", category: "Sports" },
     { name: "Cookie Clicker 2", image: "image/cookie-clicker-2.png", description: "Clicker Games", link: "/cookie-clicker-2.html", category: "Simulation" },
+    { name: "Drive Mad", image: "image/drive-mad.png", description: "driving game", link: "/drive-mad.html", category: "Racing,Sports" },
 ];
 
 /*createGameCard*/
