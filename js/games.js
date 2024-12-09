@@ -10,7 +10,8 @@ const games = [
     { name: "Drive Mad", image: "image/drive-mad.png", description: "driving game", link: "/drive-mad.html", category: "Racing,Sports" },
     { name: "G-Switch 4", image: "image/g-switch-4.png", description: "Action", link: "/g-switch-4.html", category: "Adventure,Sports" },
     { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
-    { name: "Heads Arena", image: "image/heads-arena-soccer-all-stars.png", description: "soccer game", link: "/heads-arena-soccer-all-stars.html", category: "Sports" },
+    { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
+    { name: "Little Alchemy 2", image: "image/little-alchemy-2.png", description: "soccer game", link: "/little-alchemy-2.html", category: "Sports" },
 ];
 
 /*createGameCard*/
