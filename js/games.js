@@ -1,5 +1,5 @@
 const games = [
-    { name: "Slope", image: "image/slope.png", description: "Endless Runner", link: "/slope.html", category: "Action" },
+    { name: "Slope", image: "image/slope.png", description: "Endless Runner", link: "/slope.html", category: "Arcade,Action" },
     { name: "3 Pandas In Japan", image: "image/3-pandas-in-japan.png", description: "developed by Flash Team", link: "/3-pandas-in-japan.html", category: "Adventure" },
     { name: "Retro Bowl", image: "image/retro-bowl.png", description: "Simulation Game", link: "/retro-bowl.html", category: "Sports" },
     { name: "Run 3", image: "image/run-3.png", description: "Coolmath Games classic", link: "run-3.html", category: "Action" },
