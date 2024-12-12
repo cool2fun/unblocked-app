@@ -12,10 +12,13 @@ const games = [
     { name: "Iron Snout", image: "image/iron-snout.png", description: "Fighting", link: "/iron-snout.html", category: "Adventure,Fighting" },
     { name: "Little Alchemy 2", image: "image/little-alchemy-2.png", description: "soccer game", link: "/little-alchemy-2.html", category: "Sports" },
     { name: "Mr Bullet", image: "image/mr-bullet.png", description: "Physics", link: "/mr-bullet.html", category: "Shooting,Action" },
+    { name: "Vex 8", image: "image/vex-8.png", description: "Vex Stick Figure", link: "/vex-8.html", category: "Adventure,Action" },
     { name: "Papa Cherry Saga", image: "image/papa-cherry-saga.png", description: "Puzzle", link: "/papa-cherry-saga.html", category: "Puzzle" },
     { name: "Rooftop Snipers", image: "image/rooftop-snipers.png", description: "Puzzle", link: "/rooftop-snipers.html", category: "Action,Shooting" },
     { name: "Stick Merge 2", image: "image/stick-merge-2.png", description: "Action", link: "/stick-merge-2.html", category: "Action,Shooting" },
     { name: "Rusher Crusher", image: "image/rusher-crusher.png", description: "Action Driving", link: "/rusher-crusher.html", category: "Action" },
+    { name: "Tag Unblocked", image: "image/tag.png", description: "Multiplayer Tag Game", link: "/tag-unblocked.html", category: "Action" },
+    { name: "Ball Sort Halloween", image: "image/ball-sort-halloween.png", description: "", link: "/ball-sort-halloween.html", category: "Strategy,Puzzle" },
     { name: "Subway Surfers", image: "image/subway-surfers.png", description: "Endless Runner", link: "/subway-surfers.html", category: "Action,Arcade,Adventure" },
     { name: "Super Mario", image: "image/super-mario-wonder.png", description: "Platform, Action, Adventure", link: "/super-mario-wonder.html", category: "Arcade,Adventure" },
 ];
