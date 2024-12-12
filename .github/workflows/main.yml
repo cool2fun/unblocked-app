@@ -3,9 +3,9 @@ name: Generate Sitemap
 on:
   push:
     paths:
-      - 'games.js'  # Chỉ chạy khi games.js thay đổi
+      - 'games.js'
     branches:
-      - main  # hoặc branch chính của bạn
+      - main  # hoặc master tùy vào branch chính của bạn
 
 jobs:
   generate-sitemap:
@@ -32,7 +32,7 @@ jobs:
           const games = eval(gamesMatch[1]);
           
           // Tạo sitemap
-          const domain = 'https://yourdomain.com'; // Thay domain của bạn
+          const domain = 'https://cool2fun.github.io'; // Domain của bạn
           
           let xml = '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n';
           xml += '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n';
