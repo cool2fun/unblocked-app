@@ -21,6 +21,9 @@ const games = [
     { name: "Ball Sort Halloween", image: "image/ball-sort-halloween.png", description: "", link: "/ball-sort-halloween.html", category: "Strategy,Puzzle" },
     { name: "Subway Surfers", image: "image/subway-surfers.png", description: "Endless Runner", link: "/subway-surfers.html", category: "Action,Arcade,Adventure" },
     { name: "Super Mario", image: "image/super-mario-wonder.png", description: "Platform, Action, Adventure", link: "/super-mario-wonder.html", category: "Arcade,Adventure" },
+    { name: "Blumgi Slime", image: "image/blumgi-slime.png", description: "physics game", link: "/blumgi-slime.html", category: "Adventure,Puzzle" },
+    { name: "Bouncy Woods", image: "image/bouncy-woods.png", description: "physics game", link: "/bouncy-woods.html", category: "Adventure,Puzzle" },
+    { name: "Chicken Merge", image: "image/chicken-merge.png", description: "physics game", link: "/chicken-merge.html", category: "Action,Strategy" },
 ];
 
 /*createGameCard*/
