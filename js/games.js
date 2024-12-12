@@ -28,6 +28,7 @@ const games = [
 ];
 
 /*createGameCard*/
+/*test*/
 
 function createGameCard(game) {
     return `
