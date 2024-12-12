@@ -5,7 +5,10 @@ on:
     paths:
       - 'games.js'
     branches:
-      - main  # hoặc master tùy vào branch chính của bạn
+      - main
+
+permissions:
+  contents: write  # Thêm quyền write
 
 jobs:
   generate-sitemap:
@@ -13,6 +16,8 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}  # Thêm token
       
       - name: Setup Node.js
         uses: actions/setup-node@v2
