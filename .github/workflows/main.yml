@@ -1,0 +1,88 @@
+name: Generate Sitemap
+
+on:
+  push:
+    paths:
+      - 'games.js'  # Chỉ chạy khi games.js thay đổi
+    branches:
+      - main  # hoặc branch chính của bạn
+
+jobs:
+  generate-sitemap:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          
+      - name: Create Sitemap Generator
+        run: |
+          echo "
+          const fs = require('fs');
+          
+          // Đọc nội dung của games.js
+          const gamesContent = fs.readFileSync('games.js', 'utf8');
+          
+          // Trích xuất mảng games
+          const gamesMatch = gamesContent.match(/const\s+games\s*=\s*(\[[\s\S]*?\]);/);
+          const games = eval(gamesMatch[1]);
+          
+          // Tạo sitemap
+          const domain = 'https://yourdomain.com'; // Thay domain của bạn
+          
+          let xml = '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n';
+          xml += '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n';
+          
+          // Thêm trang chủ
+          xml += `  <url>
+              <loc>\${domain}</loc>
+              <lastmod>\${new Date().toISOString().split('T')[0]}</lastmod>
+              <changefreq>daily</changefreq>
+              <priority>1.0</priority>
+          </url>\n`;
+
+          // Thêm trang game
+          games.forEach(game => {
+              xml += `  <url>
+                  <loc>\${domain}\${game.link}</loc>
+                  <lastmod>\${new Date().toISOString().split('T')[0]}</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>0.8</priority>
+              </url>\n`;
+          });
+
+          // Thêm trang category
+          const categories = new Set();
+          games.forEach(game => {
+              game.category.split(',').forEach(cat => categories.add(cat.trim()));
+          });
+
+          categories.forEach(category => {
+              xml += `  <url>
+                  <loc>\${domain}/category?category=\${encodeURIComponent(category)}</loc>
+                  <lastmod>\${new Date().toISOString().split('T')[0]}</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>0.7</priority>
+              </url>\n`;
+          });
+
+          xml += '</urlset>';
+          
+          // Ghi file sitemap.xml
+          fs.writeFileSync('sitemap.xml', xml);
+          " > generate-sitemap.js
+
+      - name: Generate Sitemap
+        run: node generate-sitemap.js
+        
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add sitemap.xml
+          git commit -m "Auto-update sitemap.xml" || echo "No changes to commit"
+          git push
