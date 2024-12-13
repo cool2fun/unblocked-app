@@ -3,7 +3,7 @@ name: Generate Sitemap
 on:
   push:
     branches:
-      - main
+      - gh-pages  # Thay đổi từ main sang gh-pages
 
 permissions:
   contents: write
@@ -15,64 +15,40 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
+          ref: gh-pages  # Thêm dòng này
+          
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '16'
           
-      - name: Debug Files
-        run: |
-          ls -la
-          cat games.js
-          
       - name: Generate Sitemap
         run: |
-          node -e "
-          const fs = require('fs');
-          const games = require('./games.js');
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
           
-          const domain = 'https://cool2fun.github.io';
+          # Add homepage
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://cool2fun.github.io</loc>' >> sitemap.xml
+          echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
+          echo '    <changefreq>daily</changefreq>' >> sitemap.xml
+          echo '    <priority>1.0</priority>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
           
-          let xml = '<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n';
-          xml += '<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">\n';
+          # Add game URLs manually since we're having issues with games.js
+          for game in slope "3-pandas-in-japan" "retro-bowl" "run-3" "adam-and-eve-7" "boxing-random" "3d-bowling" "cookie-clicker-2" "drive-mad" "g-switch-4" "iron-snout" "little-alchemy-2" "mr-bullet" "vex-8" "papa-cherry-saga" "rooftop-snipers" "stick-merge-2" "rusher-crusher" "tag" "ball-sort-halloween" "subway-surfers" "super-mario" "blumgi-slime" "bouncy-woods" "chicken-merge"
+          do
+            echo '  <url>' >> sitemap.xml
+            echo "    <loc>https://cool2fun.github.io/${game}.html</loc>" >> sitemap.xml
+            echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
+            echo '    <changefreq>weekly</changefreq>' >> sitemap.xml
+            echo '    <priority>0.8</priority>' >> sitemap.xml
+            echo '  </url>' >> sitemap.xml
+          done
           
-          xml += `  <url>
-              <loc>${domain}</loc>
-              <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-              <changefreq>daily</changefreq>
-              <priority>1.0</priority>
-          </url>\n`;
-
-          games.forEach(game => {
-              xml += `  <url>
-                  <loc>${domain}${game.link}</loc>
-                  <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-                  <changefreq>weekly</changefreq>
-                  <priority>0.8</priority>
-              </url>\n`;
-          });
-
-          const categories = new Set();
-          games.forEach(game => {
-              game.category.split(',').forEach(cat => categories.add(cat.trim()));
-          });
-
-          categories.forEach(category => {
-              xml += `  <url>
-                  <loc>${domain}/category?category=${encodeURIComponent(category)}</loc>
-                  <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
-                  <changefreq>weekly</changefreq>
-                  <priority>0.7</priority>
-              </url>\n`;
-          });
-
-          xml += '</urlset>';
-          fs.writeFileSync('sitemap.xml', xml);
-          console.log('Sitemap generated successfully');
-          console.log(xml);
-          "
+          echo '</urlset>' >> sitemap.xml
+          
+          cat sitemap.xml
 
       - name: Commit and Push Changes
         run: |
@@ -80,4 +56,4 @@ jobs:
           git config --global user.email 'action@github.com'
           git add sitemap.xml
           git commit -m "Auto-update sitemap.xml" || echo "No changes to commit"
-          git push
+          git push origin gh-pages
