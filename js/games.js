@@ -24,6 +24,7 @@ const games = [
     { name: "Blumgi Slime", image: "image/blumgi-slime.png", description: "physics game", link: "/blumgi-slime.html", category: "Adventure,Puzzle" },
     { name: "Bouncy Woods", image: "image/bouncy-woods.png", description: "physics game", link: "/bouncy-woods.html", category: "Adventure,Puzzle" },
     { name: "Chicken Merge", image: "image/chicken-merge.png", description: "physics game", link: "/chicken-merge.html", category: "Action,Strategy" },
+    { name: "Chicken Merge 2", image: "image/chicken-merge.png", description: "physics game", link: "/chicken-merge-2.html", category: "Action,Strategy" },
 ];
 
 /*createGameCard*/
