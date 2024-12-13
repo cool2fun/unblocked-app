@@ -1,59 +1,53 @@
 name: Generate Sitemap
 
 on:
+  workflow_dispatch:  # Cho phép chạy thủ công
   push:
     branches:
-      - main
+      - gh-pages
+    paths-ignore:
+      - 'sitemap.xml'  # Tránh vòng lặp vô tận
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'Auto-update sitemap')
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: gh-pages
 
-      - name: Debug Current Directory
-        run: |
-          pwd
-          ls -la
-          echo "Current directory content:"
-          
       - name: Generate Sitemap
         run: |
           echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
           echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
           
-          # Add homepage
-          echo '  <url>' >> sitemap.xml
-          echo '    <loc>https://cool2fun.github.io</loc>' >> sitemap.xml
-          echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
-          echo '    <changefreq>daily</changefreq>' >> sitemap.xml
-          echo '    <priority>1.0</priority>' >> sitemap.xml
-          echo '  </url>' >> sitemap.xml
+          # Homepage
+          echo '  <url>
+            <loc>https://cool2fun.github.io</loc>
+            <lastmod>'$(date +%Y-%m-%d)'</lastmod>
+            <priority>1.0</priority>
+          </url>' >> sitemap.xml
           
-          # Add game pages from games.js
-          if [ -f "games.js" ]; then
-            while IFS= read -r line; do
-              if [[ $line =~ link:.*\"(.*)\" ]]; then
-                LINK="${BASH_REMATCH[1]}"
-                echo '  <url>' >> sitemap.xml
-                echo "    <loc>https://cool2fun.github.io$LINK</loc>" >> sitemap.xml
-                echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
-                echo '    <changefreq>weekly</changefreq>' >> sitemap.xml
-                echo '    <priority>0.8</priority>' >> sitemap.xml
-                echo '  </url>' >> sitemap.xml
-              fi
-            done < games.js
-          fi
+          # Game pages
+          for game in slope "3-pandas-in-japan" "retro-bowl" "run-3" "adam-and-eve-7" "boxing-random" "3d-bowling" "cookie-clicker-2" "drive-mad" "g-switch-4" "iron-snout" "little-alchemy-2" "mr-bullet" "vex-8" "papa-cherry-saga" "rooftop-snipers" "stick-merge-2" "rusher-crusher" "tag" "ball-sort-halloween" "subway-surfers" "super-mario" "blumgi-slime" "bouncy-woods" "chicken-merge"; do
+            echo '  <url>
+              <loc>https://cool2fun.github.io/'$game'.html</loc>
+              <lastmod>'$(date +%Y-%m-%d)'</lastmod>
+              <priority>0.8</priority>
+            </url>' >> sitemap.xml
+          done
           
           echo '</urlset>' >> sitemap.xml
-          
-          cat sitemap.xml
 
-      - name: Commit and Push Changes
+      - name: Setup Git
         run: |
-          git config --global user.name 'GitHub Actions'
-          git config --global user.email 'github-actions@github.com'
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+
+      - name: Commit and Push
+        run: |
           git add sitemap.xml
-          git commit -m "Update sitemap.xml" || echo "No changes to commit"
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update sitemap"
           git push
