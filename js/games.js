@@ -25,6 +25,7 @@ const games = [
     { name: "Bouncy Woods", image: "image/bouncy-woods.png", description: "physics game", link: "/bouncy-woods.html", category: "Adventure,Puzzle" },
     { name: "Chicken Merge", image: "image/chicken-merge.png", description: "physics game", link: "/chicken-merge.html", category: "Action,Strategy" },
     { name: "Gun Mayhem", image: "image/bouncy-woods.png", description: "Shooting game", link: "/bouncy-woods.html", category: "Adventure,Puzzle" },
+    { name: "Run 1", image: "image/bouncy-woods.png", description: "Shooting game", link: "/bouncy-woods.html", category: "Adventure,Puzzle" },
 ];
 
 /*createGameCard*/
