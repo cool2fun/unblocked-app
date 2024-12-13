@@ -1,53 +1,73 @@
 name: Generate Sitemap
 
 on:
-  workflow_dispatch:  # Cho phép chạy thủ công
+  workflow_dispatch:
   push:
     branches:
       - gh-pages
-    paths-ignore:
-      - 'sitemap.xml'  # Tránh vòng lặp vô tận
+    paths:
+      - 'games.js'  # Chỉ trigger khi games.js thay đổi
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, 'Auto-update sitemap')
 
     steps:
       - uses: actions/checkout@v2
         with:
           ref: gh-pages
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
       - name: Generate Sitemap
         run: |
-          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
-          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+          # Tạo script để đọc games.js
+          echo '
+          const fs = require("fs");
           
-          # Homepage
-          echo '  <url>
-            <loc>https://cool2fun.github.io</loc>
-            <lastmod>'$(date +%Y-%m-%d)'</lastmod>
-            <priority>1.0</priority>
-          </url>' >> sitemap.xml
+          // Đọc và parse games.js
+          const content = fs.readFileSync("games.js", "utf8");
+          const gamesMatch = content.match(/const\s+games\s*=\s*(\[[\s\S]*?\]);/);
+          const games = eval(gamesMatch[1]);
           
-          # Game pages
-          for game in slope "3-pandas-in-japan" "retro-bowl" "run-3" "adam-and-eve-7" "boxing-random" "3d-bowling" "cookie-clicker-2" "drive-mad" "g-switch-4" "iron-snout" "little-alchemy-2" "mr-bullet" "vex-8" "papa-cherry-saga" "rooftop-snipers" "stick-merge-2" "rusher-crusher" "tag" "ball-sort-halloween" "subway-surfers" "super-mario" "blumgi-slime" "bouncy-woods" "chicken-merge"; do
-            echo '  <url>
-              <loc>https://cool2fun.github.io/'$game'.html</loc>
-              <lastmod>'$(date +%Y-%m-%d)'</lastmod>
+          // Tạo sitemap
+          let xml = `<?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            <url>
+              <loc>https://cool2fun.github.io</loc>
+              <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
+              <priority>1.0</priority>
+            </url>`;
+          
+          // Thêm URLs cho mỗi game
+          games.forEach(game => {
+            xml += `
+            <url>
+              <loc>https://cool2fun.github.io${game.link}</loc>
+              <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
               <priority>0.8</priority>
-            </url>' >> sitemap.xml
-          done
+            </url>`;
+          });
           
-          echo '</urlset>' >> sitemap.xml
-
-      - name: Setup Git
-        run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          xml += "\n</urlset>";
+          
+          // Ghi ra file sitemap.xml
+          fs.writeFileSync("sitemap.xml", xml);
+          ' > generate-sitemap.js
+          
+          # Chạy script
+          node generate-sitemap.js
+          
+          # Hiển thị kết quả
+          cat sitemap.xml
 
       - name: Commit and Push
         run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
           git add sitemap.xml
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update sitemap"
           git push
