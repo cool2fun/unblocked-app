@@ -5,7 +5,7 @@ on:
     paths:
       - 'games.js'
     branches:
-      - main  # hoặc master tùy vào branch chính của bạn
+      - gh-pages  # hoặc master tùy vào branch chính của bạn
 
 jobs:
   generate-sitemap:
