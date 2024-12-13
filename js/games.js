@@ -29,7 +29,7 @@ const games = [
 ];
 
 /*createGameCard*/
-/*AAA2*/
+/*AA55A2*/
 
 function createGameCard(game) {
     return `
