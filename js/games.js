@@ -26,6 +26,7 @@ const games = [
     { name: "Chicken Merge", image: "image/chicken-merge.png", description: "physics game", link: "/chicken-merge.html", category: "Action,Strategy" },
     { name: "Crazy Cars", image: "image/crazy-cars.png", description: "Car Games", link: "/crazy-cars.html", category: "Action,Sports,Arcade" },
     { name: "Fruit Ninja", image: "image/fruit-ninja.png", description: "Fruit Games", link: "/fruit-ninja.html", category: "Action,Puzzle,Arcade" },
+    { name: "Hanger", image: "image/hanger.png", description: "Adventure", link: "/hanger.html", category: "Action,Adventure,Arcade" },
 ];
 
 /*createGameCard*/
