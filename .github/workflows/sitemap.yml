@@ -1,0 +1,59 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Debug Current Directory
+        run: |
+          pwd
+          ls -la
+          echo "Current directory content:"
+          
+      - name: Generate Sitemap
+        run: |
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
+          
+          # Add homepage
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://cool2fun.github.io</loc>' >> sitemap.xml
+          echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
+          echo '    <changefreq>daily</changefreq>' >> sitemap.xml
+          echo '    <priority>1.0</priority>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
+          
+          # Add game pages from games.js
+          if [ -f "games.js" ]; then
+            while IFS= read -r line; do
+              if [[ $line =~ link:.*\"(.*)\" ]]; then
+                LINK="${BASH_REMATCH[1]}"
+                echo '  <url>' >> sitemap.xml
+                echo "    <loc>https://cool2fun.github.io$LINK</loc>" >> sitemap.xml
+                echo "    <lastmod>$(date '+%Y-%m-%d')</lastmod>" >> sitemap.xml
+                echo '    <changefreq>weekly</changefreq>' >> sitemap.xml
+                echo '    <priority>0.8</priority>' >> sitemap.xml
+                echo '  </url>' >> sitemap.xml
+              fi
+            done < games.js
+          fi
+          
+          echo '</urlset>' >> sitemap.xml
+          
+          cat sitemap.xml
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'github-actions@github.com'
+          git add sitemap.xml
+          git commit -m "Update sitemap.xml" || echo "No changes to commit"
+          git push
