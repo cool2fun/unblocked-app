@@ -30,7 +30,7 @@ const games = [
 ];
 
 /*createGameCard*/
-//aad
+//aadff
 function createGameCard(game) {
     return `
         <div class="game-card">
