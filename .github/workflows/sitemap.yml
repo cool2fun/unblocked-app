@@ -1,14 +1,13 @@
 name: Generate Sitemap
 
 on:
-  workflow_dispatch:  # Cho phép chạy thủ công
   push:
     branches:
-      - gh-pages  # Branch chính của bạn
+      - gh-pages
     paths:
-      - 'games.js'  # Chỉ chạy khi games.js thay đổi
+      - 'games.js'
 
-permissions:  # Thêm permissions
+permissions:
   contents: write
 
 jobs:
@@ -16,78 +15,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: gh-pages  # Đảm bảo checkout đúng branch
-
-      - name: Debug
-        run: |
-          pwd
-          ls -la
-          echo "Content of games.js:"
-          cat games.js
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+      - uses: actions/checkout@v3
 
       - name: Generate Sitemap
+        id: sitemap
         run: |
-          node -e '
-          const fs = require("fs");
+          echo "Creating sitemap.xml"
+          echo '<?xml version="1.0" encoding="UTF-8"?>' > sitemap.xml
+          echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' >> sitemap.xml
           
-          try {
-            // Đọc file games.js
-            const content = fs.readFileSync("games.js", "utf8");
-            console.log("Read games.js successfully");
-            
-            // Parse games array
-            const gamesMatch = content.match(/const\s+games\s*=\s*(\[[\s\S]*?\]);/);
-            if (!gamesMatch) {
-              throw new Error("Could not find games array in games.js");
-            }
-            
-            const games = eval(gamesMatch[1]);
-            console.log(`Found ${games.length} games`);
-            
-            // Generate sitemap
-            let xml = `<?xml version="1.0" encoding="UTF-8"?>
-            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-              <url>
-                <loc>https://cool2fun.github.io</loc>
-                <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
-                <priority>1.0</priority>
-              </url>`;
-            
-            // Add game URLs
-            games.forEach(game => {
-              console.log(`Adding URL for game: ${game.name}`);
-              xml += `
-              <url>
-                <loc>https://cool2fun.github.io${game.link}</loc>
-                <lastmod>${new Date().toISOString().split("T")[0]}</lastmod>
-                <priority>0.8</priority>
-              </url>`;
-            });
-            
-            xml += "\n</urlset>";
-            
-            // Write sitemap
-            fs.writeFileSync("sitemap.xml", xml);
-            console.log("Sitemap generated successfully");
-            console.log("\nGenerated sitemap content:");
-            console.log(xml);
-            
-          } catch (error) {
-            console.error("Error:", error);
-            process.exit(1);
-          }
-          '
-
-      - name: Verify Sitemap
-        run: |
-          echo "Generated sitemap content:"
+          # Add homepage
+          echo '  <url>' >> sitemap.xml
+          echo '    <loc>https://cool2fun.github.io</loc>' >> sitemap.xml
+          echo "    <lastmod>$(date +%Y-%m-%d)</lastmod>" >> sitemap.xml
+          echo '    <priority>1.0</priority>' >> sitemap.xml
+          echo '  </url>' >> sitemap.xml
+          
+          # Extract game URLs from games.js
+          grep -o 'link: *"[^"]*"' games.js | while read -r line; do
+            GAME_URL=$(echo "$line" | sed 's/link: *"\(.*\)"/\1/')
+            echo "  <url>" >> sitemap.xml
+            echo "    <loc>https://cool2fun.github.io${GAME_URL}</loc>" >> sitemap.xml
+            echo "    <lastmod>$(date +%Y-%m-%d)</lastmod>" >> sitemap.xml
+            echo "    <priority>0.8</priority>" >> sitemap.xml
+            echo "  </url>" >> sitemap.xml
+          done
+          
+          echo '</urlset>' >> sitemap.xml
+          
+          echo "Sitemap content:"
           cat sitemap.xml
 
       - name: Commit and Push
@@ -95,5 +51,5 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add sitemap.xml
-          git commit -m "Auto-update sitemap" || echo "No changes to sitemap"
+          git commit -m "Update sitemap" || echo "No changes to commit"
           git push || echo "No changes to push"
