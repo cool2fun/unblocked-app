@@ -4,8 +4,10 @@ on:
   push:
     paths:
       - 'games.js'
-    branches:
-      - main
+      on:
+        push:
+          branches:
+            - main
 
 permissions:
   contents: write  # Thêm quyền write
