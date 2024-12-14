@@ -504,14 +504,38 @@ main {
 .game-wrapper:-ms-fullscreen,
 .game-wrapper:fullscreen {
     padding-bottom: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw !important;  /* Chiều rộng của viewport */
+    height: 100vh !important; /* Chiều cao của viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .game-wrapper:-webkit-full-screen .game-frame,
 .game-wrapper:-moz-full-screen .game-frame,
 .game-wrapper:-ms-fullscreen .game-frame,
 .game-wrapper:fullscreen .game-frame {
-    width: 100%;
-    height: 100%;
+    /* Sửa kích thước để giữ tỷ lệ và không bị overflow */
+    position: absolute;
+    width: auto !important;       /* Để tự động điều chỉnh theo tỷ lệ */
+    height: 100vh !important;     /* Chiều cao tối đa */
+    max-width: 100vw;            /* Không vượt quá chiều rộng màn hình */
+    max-height: 100vh;           /* Không vượt quá chiều cao màn hình */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Căn giữa chính xác */
+    margin: 0;
+}
+@media (orientation: portrait) {
+    .game-wrapper:fullscreen .game-frame {
+        width: 100vw !important;  /* Ưu tiên chiều rộng khi màn hình dọc */
+        height: auto !important;
+    }
+}
+
+@media (orientation: landscape) {
+    .game-wrapper:fullscreen .game-frame {
+        width: 100% !important;   /* Ưu tiên chiều cao khi màn hình ngang */
+        height: 100vh !important;
+    }
 }
