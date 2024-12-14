@@ -9,7 +9,7 @@ const categories = [
     { name: "Adventure", link: "category.html?category=Adventure" },
     { name: "Simulation", link: "category.html?category=Simulation"},
     { name: "All Games", link: "category.html" },
-    // Thêm các danh mục khác ở đây
+
   ];
   
   function createCategories() {

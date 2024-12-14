@@ -33,5 +33,5 @@ const adSlots = {
      }
  }
  
- // Tải script AdSense và chèn quảng cáo khi trang đã tải xong
+
  window.addEventListener('load', loadAdSenseScript);

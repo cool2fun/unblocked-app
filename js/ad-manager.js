@@ -6,7 +6,7 @@ fetch('js/ad-config.json')
       if (adConfig[slotId]) {
         const adData = adConfig[slotId];
 
-        // Tạo phần tử quảng cáo
+
         const adScript = document.createElement('script');
         adScript.async = true;
         adScript.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adData.adClient}`;
@@ -23,7 +23,7 @@ fetch('js/ad-config.json')
         container.appendChild(adScript);
         container.appendChild(adIns);
 
-        // Kích hoạt quảng cáo
+
         (adsbygoogle = window.adsbygoogle || []).push({});
       }
     });
