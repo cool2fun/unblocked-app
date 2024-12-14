@@ -90,17 +90,18 @@
     <main>
         <div class="ad-container" data-ad-slot="ad-slot-728x90"></div>
         <div class="content-wrapper">
-            <div class="game-container">
-                <div class="game-wrapper">
-                    <iframe id="gameFrame" class="game-frame" src="https://ubg98.github.io/RusherCrusher/" frameborder="0" allowfullscreen></iframe>
+            <div class="game-and-info">
+                <div class="game-container">
+                    <div class="game-wrapper">
+                        <iframe id="gameFrame" class="game-frame" src="https://ubg98.github.io/RusherCrusher/" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                    <div class="fullscreen-controls">
+                        <button class="fullscreen-button">
+                            <i class="fas fa-expand"></i>
+                            Fullscreen
+                        </button>
+                    </div>
                 </div>
-                <div class="fullscreen-controls">
-                    <button class="fullscreen-button">
-                        <i class="fas fa-expand"></i>
-                        Fullscreen
-                    </button>
-                </div>
-            </div>
                 <div class="ad-container" data-ad-slot="ad-slot-970x250"></div>
                 <div class="game-info">
                     <h2>Rusher Crusher Unblocked</h2>
@@ -165,7 +166,7 @@
                 gameList.appendChild(li);
             });
         }
-        
+        //full man
         document.querySelector('.fullscreen-button').addEventListener('click', function() {
     const gameWrapper = document.querySelector('.game-wrapper');
     
