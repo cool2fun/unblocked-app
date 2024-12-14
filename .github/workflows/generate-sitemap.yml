@@ -1,0 +1,70 @@
+name: Generate Sitemap
+
+on:
+  push:
+    branches: [ gh-pages ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Create Sitemap Generator Script
+        run: |
+          cat > generate-sitemap.js << 'EOL'
+          const fs = require('fs');
+          const path = require('path');
+
+          // Read games data
+          const gamesContent = fs.readFileSync('games.js', 'utf8');
+          // Extract array from const declaration
+          const gamesMatch = gamesContent.match(/\[[\s\S]*\]/);
+          if (!gamesMatch) {
+            console.error('Could not find games array in file');
+            process.exit(1);
+          }
+          
+          // Safely evaluate the array
+          const games = eval(gamesMatch[0]);
+
+          // Your website URL
+          const baseUrl = 'https://cool2fun.github.io';
+
+          // Generate sitemap content
+          const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+          <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            ${games.map(game => `
+              <url>
+                <loc>${baseUrl}${game.link}</loc>
+                <lastmod>${new Date().toISOString().split('T')[0]}</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.8</priority>
+              </url>
+            `).join('')}
+          </urlset>`.trim();
+
+          // Write sitemap file
+          fs.writeFileSync('sitemap.xml', sitemapContent);
+          console.log('Sitemap generated successfully!');
+          EOL
+
+      - name: Generate Sitemap
+        run: node generate-sitemap.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add sitemap.xml
+          git commit -m "Update sitemap.xml" || echo "No changes to commit"
+          git push
