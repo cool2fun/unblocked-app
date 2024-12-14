@@ -89,11 +89,14 @@
             <div class="game-and-info">
                 <div class="game-container">
                     <div class="game-wrapper">
-                        <div class="game-frame">
-                            <iframe src="https://ubg98.github.io/BoxingRandom/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
-                        </div>
+                        <iframe id="gameFrame" class="game-frame" src="https://ubg98.github.io/BoxingRandom/ frameborder="0" allowfullscreen></iframe>
                     </div>
-                    <button class="fullscreen-btn" id="fullscreenBtn">Play Fullscreen</button>
+                    <div class="fullscreen-controls">
+                        <button class="fullscreen-button">
+                            <i class="fas fa-expand"></i>
+                            Fullscreen
+                        </button>
+                    </div>
                 </div>
                 <div class="ad-container" data-ad-slot="ad-slot-970x250"></div>
                 <div class="game-info">
@@ -149,36 +152,36 @@
             });
         }
         
-        function toggleFullscreen() {
-            const gameWrapper = document.querySelector('.game-wrapper');
-            if (!document.fullscreenElement) {
-                if (gameWrapper.requestFullscreen) {
-                    gameWrapper.requestFullscreen();
-                } else if (gameWrapper.mozRequestFullScreen) {
-                    gameWrapper.mozRequestFullScreen();
-                } else if (gameWrapper.webkitRequestFullscreen) {
-                    gameWrapper.webkitRequestFullscreen();
-                } else if (gameWrapper.msRequestFullscreen) {
-                    gameWrapper.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
+        document.querySelector('.fullscreen-button').addEventListener('click', function() {
+    const gameWrapper = document.querySelector('.game-wrapper');
+    
+    if (!document.fullscreenElement) {
+        if (gameWrapper.requestFullscreen) {
+            gameWrapper.requestFullscreen();
+        } else if (gameWrapper.webkitRequestFullscreen) {
+            gameWrapper.webkitRequestFullscreen();
+        } else if (gameWrapper.msRequestFullscreen) {
+            gameWrapper.msRequestFullscreen();
         }
-        
-        window.onload = function() {
-    insertAds();
-    renderOtherGames();
-    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
-};
+        this.innerHTML = '<i class="fas fa-compress"></i> Exit Fullscreen';
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
+        this.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+    }
+});
+
+document.addEventListener('fullscreenchange', function() {
+    const button = document.querySelector('.fullscreen-button');
+    if (!document.fullscreenElement) {
+        button.innerHTML = '<i class="fas fa-expand"></i> Fullscreen';
+    }
+});
     </script>
     <script src="/js/categories.js" defer></script>
     <script src="/js/games.js" defer></script>
