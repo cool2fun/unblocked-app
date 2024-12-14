@@ -92,8 +92,14 @@
                         <div class="game-frame">
                             <iframe src="https://ubg98.github.io/InfiniteSoccer/" frameborder="0" width="100%" height="100%" allowfullscreen></iframe>
                         </div>
+                        <div class="game-overlay">
+                            <button class="overlay-fullscreen-btn" id="overlayFullscreenBtn">
+                                <i class="fas fa-expand"></i>
+                                Play Fullscreen
+                            </button>
+                        </div>
                     </div>
-                    <button class="fullscreen-btn" id="fullscreenBtn">Play Fullscreen</button>
+
                 </div>
                 <div class="ad-container" data-ad-slot="ad-slot-970x250"></div>
                 <div class="game-info">
@@ -144,49 +150,79 @@
         </div>
     </footer>
     <script>
-        function refreshGames() {
-            const games = [
-                "Games Sport", "Games Racing", "Games Action",
-                "Games Arcade", "Games Adventure", "Games Puzzle"
-            ];
-            const gameList = document.getElementById('gameList');
-            gameList.innerHTML = '';
-            games.forEach(game => {
-                const li = document.createElement('li');
-                li.textContent = game;
-                gameList.appendChild(li);
-            });
+function refreshGames() {
+    const games = [
+        "Games Sport", "Games Racing", "Games Action",
+        "Games Arcade", "Games Adventure", "Games Puzzle"
+    ];
+    const gameList = document.getElementById('gameList');
+    gameList.innerHTML = '';
+    games.forEach(game => {
+        const li = document.createElement('li');
+        li.textContent = game;
+        gameList.appendChild(li);
+    });
+}
+
+function handleFullscreenChange() {
+    const fullscreenBtn = document.getElementById('overlayFullscreenBtn');
+    const icon = fullscreenBtn.querySelector('i');
+    
+    if (document.fullscreenElement) {
+        icon.classList.remove('fa-expand');
+        icon.classList.add('fa-compress');
+    } else {
+        icon.classList.remove('fa-compress');
+        icon.classList.add('fa-expand');
+    }
+}
+
+function toggleFullscreen() {
+    const gameFrame = document.querySelector('.game-frame');
+    const icon = document.querySelector('.overlay-fullscreen-btn i');
+    
+    if (!document.fullscreenElement) {
+        if (gameFrame.requestFullscreen) {
+            gameFrame.requestFullscreen();
+        } else if (gameFrame.mozRequestFullScreen) {
+            gameFrame.mozRequestFullScreen();
+        } else if (gameFrame.webkitRequestFullscreen) {
+            gameFrame.webkitRequestFullscreen();
+        } else if (gameFrame.msRequestFullscreen) {
+            gameFrame.msRequestFullscreen();
         }
-        
-        function toggleFullscreen() {
-            const gameWrapper = document.querySelector('.game-wrapper');
-            if (!document.fullscreenElement) {
-                if (gameWrapper.requestFullscreen) {
-                    gameWrapper.requestFullscreen();
-                } else if (gameWrapper.mozRequestFullScreen) {
-                    gameWrapper.mozRequestFullScreen();
-                } else if (gameWrapper.webkitRequestFullscreen) {
-                    gameWrapper.webkitRequestFullscreen();
-                } else if (gameWrapper.msRequestFullscreen) {
-                    gameWrapper.msRequestFullscreen();
-                }
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) {
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
-                }
-            }
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
         }
-        
-        window.onload = function() {
+    }
+}
+
+window.onload = function() {
     insertAds();
     renderOtherGames();
-    document.getElementById('fullscreenBtn').addEventListener('click', toggleFullscreen);
+    
+    // Thêm event listener cho nút fullscreen
+    document.getElementById('overlayFullscreenBtn').addEventListener('click', toggleFullscreen);
+    
+    // Thêm event listeners cho thay đổi trạng thái fullscreen
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+    document.addEventListener('MSFullscreenChange', handleFullscreenChange);
+    
+    // Xóa event listener của nút cũ nếu còn tồn tại
+    const oldFullscreenBtn = document.getElementById('fullscreenBtn');
+    if (oldFullscreenBtn) {
+        oldFullscreenBtn.removeEventListener('click', toggleFullscreen);
+        oldFullscreenBtn.style.display = 'none'; // Ẩn nút cũ
+    }
 };
     </script>
     <script src="/js/categories.js" defer></script>
