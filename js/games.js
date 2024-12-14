@@ -27,10 +27,11 @@ const games = [
     { name: "Crazy Cars", image: "image/crazy-cars.png", description: "Car Games", link: "/crazy-cars.html", category: "Action,Sports,Arcade" },
     { name: "Fruit Ninja", image: "image/fruit-ninja.png", description: "Fruit Games", link: "/fruit-ninja.html", category: "Action,Puzzle,Arcade" },
     { name: "Hanger", image: "image/hanger.png", description: "Adventure", link: "/hanger.html", category: "Action,Adventure,Arcade" },
+    { name: "Head Soccer 2023", image: "image/head-soccer-2023.png", description: "soccer games", link: "/head-soccer-2023.html", category: "Sports,Strategy,Arcade" },
 ];
 
 /*createGameCard*/
-//aadff
+
 function createGameCard(game) {
     return `
         <div class="game-card">
