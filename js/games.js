@@ -30,6 +30,7 @@ const games = [
     { name: "Head Soccer 2023", image: "image/head-soccer-2023.png", description: "soccer games", link: "/head-soccer-2023.html", category: "Sports,Strategy,Arcade" },
     { name: "Infinite Soccer", image: "image/infinite-soccer.png", description: "soccer games", link: "/infinite-soccer.html", category: "Sports,Strategy,Arcade" },
     { name: "Marbles Sorting", image: "image/marbles-sorting.png", description: "Adventure", link: "/marbles-sorting.html", category: "Action,Shooting,Arcade" },
+    { name: "Monkey Mart", image: "image/monkey-mart.png", description: "Adventure", link: "/monkey-mart.html", category: "Adventure,Shooting,Arcade" },
 ];
 
 /*createGameCard*/
