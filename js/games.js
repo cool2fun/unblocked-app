@@ -31,6 +31,7 @@ const games = [
     { name: "Infinite Soccer", image: "image/infinite-soccer.png", description: "soccer games", link: "/infinite-soccer.html", category: "Sports,Strategy,Arcade" },
     { name: "Marbles Sorting", image: "image/marbles-sorting.png", description: "Adventure", link: "/marbles-sorting.html", category: "Action,Shooting,Arcade" },
     { name: "Monkey Mart", image: "image/monkey-mart.png", description: "Adventure", link: "/monkey-mart.html", category: "Adventure,Shooting,Arcade" },
+    { name: "Pou", image: "image/pou.png", description: "Arcade", link: "/pou.html", category: "Adventure,Arcade" },
 ];
 
 /*createGameCard*/
