@@ -232,4 +232,11 @@
           <priority>0.8</priority>
         </url>
       
+        <url>
+          <loc>https://cool2fun.github.io/pou.html</loc>
+          <lastmod>2024-12-15</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>0.8</priority>
+        </url>
+      
     </urlset>
