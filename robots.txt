@@ -1,36 +1,12 @@
-# robots.txt for Cool2Fun Games
-
 User-agent: *
 Allow: /
-Allow: /games/
-Allow: /category/
-Allow: /about-us
-Allow: /contact
-Allow: /privacy-policy
-Allow: /terms-of-use
 
-# Prevent crawling of administrative pages
-Disallow: /admin/
-Disallow: /wp-admin/
-Disallow: /wp-includes/
-Disallow: /search
-Disallow: /*?*
-Disallow: /*?
-Disallow: /tag/
+User-agent: Mediapartners-Google
+Allow: /
+Allow: /ads.txt
 
-# Prevent crawling of specific file types
-Disallow: /*.json$
-Disallow: /*.xml$
-Disallow: /*.txt$
+User-agent: Adsbot-Google
+Allow: /
+Allow: /ads.txt
 
-# Allow site assets
-Allow: /images/
-Allow: /css/
-Allow: /js/
-Allow: /fonts/
-
-# Sitemap location
 Sitemap: https://cool2fun.github.io/sitemap.xml
-
-# Crawl-delay directive
-Crawl-delay: 1
